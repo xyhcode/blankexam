@@ -6,6 +6,13 @@
     </div>
     <div class="block">
       <el-timeline>
+
+<!--        <el-timeline-item v-for="up in update" key="up.id" :timestamp="up.create_time" placement="top">
+          <el-card>
+            <h4>{{up.new_content}}</h4>
+            <p>{{up.username}} 提交于 {{up.create_time}}</p>
+          </el-card>
+        </el-timeline-item>-->
         <el-timeline-item timestamp="2019/4/13" placement="top">
           <el-card>
             <h4>实现上传至服务器和输入 URL 两种方式添加封面</h4>
@@ -43,7 +50,23 @@
 
 <script>
   export default {
-    name: 'UpdateCard'
+    name: 'UpdateCard',
+    data(){
+      return{
+        update:[]
+      }
+    },
+    mounted () {
+      this.getupdaecar();
+    },
+    methods: {
+      getupdaecar(){
+        this.$axios.get('/new/').then((req)=>{
+          console.log(req);
+          this.update=req.data.data;
+        })
+      }
+    }
   }
 </script>
 
