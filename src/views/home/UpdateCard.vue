@@ -53,19 +53,19 @@
     name: 'UpdateCard',
     data(){
       return{
-        update:[]
+        /* update:[] */
       }
     },
     mounted () {
-      this.getupdaecar();
+      /* this.getupdaecar(); */
     },
     methods: {
-      getupdaecar(){
+      /* getupdaecar(){
         this.$axios.get('/new/').then((req)=>{
           console.log(req);
           this.update=req.data.data;
         })
-      }
+      } */
     }
   }
 </script>
