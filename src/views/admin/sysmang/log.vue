@@ -3,12 +3,12 @@
     <el-row style="margin: 18px 0px 0px 18px ">
       <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/admin/dashboard' }">管理中心</el-breadcrumb-item>
-        <el-breadcrumb-item>用户管理</el-breadcrumb-item>
-        <el-breadcrumb-item>学生管理</el-breadcrumb-item>
+        <el-breadcrumb-item>系统管理</el-breadcrumb-item>
+        <el-breadcrumb-item>日志管理</el-breadcrumb-item>
       </el-breadcrumb>
     </el-row>
     <el-card style="margin: 18px 2%;width: 95%">
-      <el-table :data="flow"
+      <el-table :data="student"
                 stripe
                 style="width: 100%">
         <el-table-column
@@ -20,20 +20,16 @@
           fit prop="id">
         </el-table-column>
         <el-table-column
-          label="流水ID"
-          fit prop="flow_id">
+          label="姓名"
+          fit prop="stu_name">
         </el-table-column>
         <el-table-column
-          label="订单ID"
-          fit prop="order_id">
+          label="电话"
+          fit prop="phone">
         </el-table-column>
         <el-table-column
-          label="支付金额"
-          fit prop="pay_amount">
-        </el-table-column>
-        <el-table-column
-          label="用户名"
-          fit prop="username">
+          label="入学时间"
+          fit prop="create_time">
         </el-table-column>
         <el-table-column
           fixed="right"
@@ -63,22 +59,7 @@
 
 <script>
 export default {
-  name: 'Flow',
-  data(){
-    return{
-      flow:[]
-    }
-  },
-  mounted () {
-    this.getflow();
-  },
-  methods:{
-    getflow() {
-      this.$axios.get('/order/flow').then((req)=>{
-        this.flow=req.data.data;
-      })
-    }
-  }
+  name: 'log'
 }
 </script>
 

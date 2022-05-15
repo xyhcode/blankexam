@@ -102,17 +102,22 @@ const routes = [
       {
         path: '/admin/order',
         name: 'order',
-        component: () => import('../views/admin/order/Order')
+        component: () => import('../views/admin/affairs/Order')
       },
       {
         path: '/admin/flow',
         name: 'flow',
-        component: () => import('../views/admin/flow/Flow')
+        component: () => import('../views/admin/affairs/Flow')
       },
       {
         path: '/admin/message',
         name: 'message',
         component: () => import('../views/admin/message/Message')
+      },
+      {
+        path: '/admin/log',
+        name:'log',
+        component: () => import('../views/admin/sysmang/log')
       }
     ]
   },

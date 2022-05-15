@@ -81,7 +81,7 @@ export default {
   },
   methods:{
     getorder() {
-      this.$axios.get('/order/').then((req)=>{
+      this.$axios.get('/order/flow').then((req)=>{
         console.log(req.data.data);
         this.order = req.data.data
       })
