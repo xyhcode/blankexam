@@ -8,7 +8,7 @@
       </el-breadcrumb>
     </el-row>
     <el-card style="margin: 18px 2%;width: 95%">
-      <el-table :data="student"
+      <el-table :data="loglist"
                 stripe
                 style="width: 100%">
         <el-table-column
@@ -20,18 +20,33 @@
           fit prop="id">
         </el-table-column>
         <el-table-column
-          label="姓名"
-          fit prop="stu_name">
+          label="请求地址"
+          fit prop="classes_name">
         </el-table-column>
         <el-table-column
-          label="电话"
-          fit prop="phone">
+          label="IP地址"
+          fit prop="ip">
         </el-table-column>
         <el-table-column
-          label="入学时间"
+          label="请求方式"
+          fit prop="methods_name">
+        </el-table-column>
+        <el-table-column
+          label="请求参数"
+          fit prop="paramses">
+        </el-table-column>
+        <el-table-column
+          label="请求用户"
+          fit prop="user_name">
+        </el-table-column>
+        <el-table-column
+          label="创建时间"
           fit prop="create_time">
+          <template v-slot="scope">
+            {{scope.row.create_time | create_time}}
+          </template>
         </el-table-column>
-        <el-table-column
+<!--        <el-table-column
           fixed="right"
           label="操作"
           width="120">
@@ -47,7 +62,7 @@
               移除
             </el-button>
           </template>
-        </el-table-column>
+        </el-table-column>-->
       </el-table>
       <div style="margin: 20px 0 20px 0;float: left">
         <el-button>取消选择</el-button>
@@ -59,7 +74,22 @@
 
 <script>
 export default {
-  name: 'log'
+  name: 'log',
+  data () {
+    return{
+      loglist: [],
+    }
+  },
+  mounted () {
+    this.getlog();
+  },
+  methods:{
+    getlog(){
+      this.$axios.get('/log/').then((req)=>{
+        this.loglist = req.data.data
+      })
+    }
+  }
 }
 </script>
 

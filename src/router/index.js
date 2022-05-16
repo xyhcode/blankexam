@@ -139,11 +139,16 @@ router.beforeEach((to,from,next)=>{
     next({path:'/login'})
   }else {
     axios.get('/menu/authentication').then(resp => {
-      if (resp.data.code!=200) {
-        next({path:'/login'})
-      }else{
+      try {
         next();
+      }catch (e) {
+        next({path:'/login'})
       }
+      /* if (resp.data.code!=200) {
+
+      }else{
+
+      } */
     });
   }
 });
